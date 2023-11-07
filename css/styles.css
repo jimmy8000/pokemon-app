@@ -1,0 +1,10 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 2rem;
+    font-family: sans-serif;
+    color: darkslategrey;
+    background-color: rgb(243, 244, 246);
+    
+}
