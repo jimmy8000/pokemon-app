@@ -16,10 +16,10 @@ let pokemonRepository = (function ($) {
   }
 
   function addListItem(pokemon) {
-    let listItem = $("<div>").addClass("col-md-4 mb-3"); 
+    let listItem = $("<div>").addClass("col-md-4 mb-3");
     let button = $("<button>")
       .text(pokemon.name)
-      .addClass("btn btn-primary btn-block"); 
+      .addClass("btn btn-primary btn-block");
     listItem.append(button);
     $("#pokemonGrid").append(listItem);
 
@@ -110,6 +110,27 @@ let pokemonRepository = (function ($) {
     if (target.is(modalContainer)) {
       hideModal();
     }
+  });
+
+  function searchPokemon() {
+    let searchInput = $("#pokemonSearch").val().toLowerCase();
+    let filteredList = pokemonList.filter(function (pokemon) {
+      return pokemon.name.toLowerCase().includes(searchInput);
+    });
+    displayPokemonList(filteredList);
+  }
+
+  function displayPokemonList(list) {
+    $("#pokemonGrid").empty(); 
+    list.forEach(function (pokemon) {
+      pokemonRepository.addListItem(pokemon);
+    });
+  }
+
+  $(document).ready(function () {
+    $("#pokemonSearch").on("input", function () {
+      searchPokemon();
+    });
   });
 
   return {
