@@ -23,7 +23,7 @@ let pokemonRepository = (function ($) {
     listItem.append(button);
     $("#pokemonGrid").append(listItem);
 
-    button.on("click", function (event) {
+    button.on("click", function () {
       showDetails(pokemon);
       modalContainer.modal("show");
     });
